@@ -3,11 +3,27 @@ import React, { useState } from 'react'
 import Select from 'react-select';
 
 const options = [
-    { value: 'walk-in customer', label: 'Walk-in customer' },
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
     { value: 'vanilla', label: 'Vanilla' }
 ]
+
+const customStyles: any = {
+    control: (provided: any) => ({
+        ...provided,
+        padding: '0rem 0rem',
+        height: '0rem'
+        // Adjust padding as needed
+    }),
+    placeholder: (provided: any) => ({
+        ...provided,
+        fontSize: '0.75rem', // Adjust font size as needed
+    }),
+    input: (provided: any) => ({
+        ...provided,
+        padding: '0rem',
+    })
+};
 
 const HOLD_ITEMS = [
     {
@@ -47,7 +63,7 @@ const PaymentHeader = () => {
 
     return (
         <header className='h-14 bg-slate-700 px-3 w-full flex gap-2 items-center'>
-            <button onClick={handleToggleOpenHold} className='text-gray-900 whitespace-nowrap gap-2 bg-white hover:bg-gray-100 border border-gray-200 font-medium rounded-lg text-sm px-2 py-1.5 text-center inline-flex items-center'><PackageOpen />Open Hold</button>
+            <button onClick={handleToggleOpenHold} className='text-gray-900 whitespace-nowrap gap-2 bg-white hover:bg-gray-100 border border-gray-200 font-medium rounded text-sm px-2  py-2 md:text-xs text-center inline-flex items-center'><PackageOpen className='w-5 h-5' />Open Hold</button>
             {isOpenHold && (
                 <>
                     <div onClick={handleToggleOpenHold} className='fixed top-0 left-0 bg-black/65 w-full h-full z-40 transition-all duration-300' />
@@ -75,9 +91,9 @@ const PaymentHeader = () => {
                 </>
             )}
             <Select
-                className="w-full"
+                styles={customStyles}
+                className="w-full placeholder:text-xs"
                 classNamePrefix="select"
-                defaultValue={options[0]}
                 isLoading={false}
                 isClearable={true}
                 placeholder="Search customer..."
@@ -85,7 +101,7 @@ const PaymentHeader = () => {
                 name="color"
                 options={options}
             />
-            <button className='text-gray-900 whitespace-nowrap gap-2 bg-white hover:bg-gray-100 border border-gray-200 font-medium rounded-lg text-sm px-2 py-2 text-center inline-flex items-center'><UserPlus size={20} /></button>
+            <button className='text-gray-900 whitespace-nowrap gap-2 bg-white hover:bg-gray-100 border border-gray-200 font-medium rounded text-sm  px-2 py-2 text-center inline-flex items-center'><UserPlus size={20} /></button>
         </header >
     )
 }

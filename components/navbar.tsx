@@ -1,12 +1,12 @@
 'use client'
-import { Menu as MenuIcon, Search, Wifi } from 'lucide-react'
+import { ArrowLeftToLine, Menu as MenuIcon, Search, Wifi, X } from 'lucide-react'
 import Image from 'next/image'
 import React, { Fragment, useEffect, useRef, useState } from 'react'
 
 
 const Navbar = () => {
 
-    const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+    const [isDrawerOpen, setIsDrawerOpen] = useState(true)
     const [isProfileOpen, setIsProfileOpen] = useState(false)
     const dropdownRef = useRef<HTMLDivElement>(null);
     const [isOnline, setIsOnline] = useState(true);
@@ -45,8 +45,13 @@ const Navbar = () => {
             </div>
             <>
                 <div onClick={() => setIsDrawerOpen(!isDrawerOpen)} className={isDrawerOpen ? 'fixed w-full h-full bg-black/50 top-0 left-0 transition-all duration-300 z-50' : 'hidden transition-all duration-300'} />
-                <div className={isDrawerOpen ? 'fixed bg-white z-50 w-[270px] left-0 top-0 h-full transition-all duration-200' : 'fixed bg-white w-[270px] -left-[50%] top-0 h-full transition-all duration-200'}>
-                    drawer
+                <div className={isDrawerOpen ? 'fixed bg-[#061829] z-50 w-[270px] left-0 top-0 h-full transition-all duration-200' : 'fixed bg-[#061829] w-[270px] -left-[50%] top-0 h-full transition-all duration-200'}>
+                    <div className='flex items-center justify-between px-2 py-1'>
+                        <Image src={'/images/logo-2.png'} width={60} height={50} alt='logo' />
+                        <div className='hover:scale-105 transition-all cursor-pointer text-gray-400 hover:text-white'>
+                            <ArrowLeftToLine onClick={() => setIsDrawerOpen(false)} size={20} className='' />
+                        </div>
+                    </div>
                 </div>
             </>
             <form>
@@ -70,7 +75,6 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-
         </nav>
     )
 }

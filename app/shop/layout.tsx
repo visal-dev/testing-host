@@ -16,11 +16,11 @@ const PosLayout = ({
 }) => {
     return (
         <div className='flex h-full w-full'>
-            <main className='bg-slate-100 w-[calc(100%-500px)]'>
+            <main className='bg-slate-100 w-full md:w-[calc(100%-400px)] xl:w-[calc(100%-500px)]'>
                 <Navbar />
                 {children}
             </main>
-            <aside className='bg-white fixed right-0 h-full text-black w-[500px]'>
+            <aside className='bg-white fixed right-0 h-full text-black hidden md:block md:w-[400px] xl:w-[500px]'>
                 <PaymentOrder />
             </aside>
         </div>

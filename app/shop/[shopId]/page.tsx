@@ -128,7 +128,7 @@ export default function PosPage({ params }: { params: { shopId: string } }) {
         return () => {
             document.removeEventListener('mousedown', handleOutsideClick);
         };
-    }, [activeTab, userFavoriteProductIds]);
+    }, [activeTab]);
 
     return (
         <div className="w-full h-[calc(100%-120px)] overflow-y-auto scrollbar-hide">
@@ -143,18 +143,18 @@ export default function PosPage({ params }: { params: { shopId: string } }) {
                     </button>
                 ))}
             </div>
-            <div className="p-4 grid lg:grid-cols-5 md:grid-cols-4 gap-5">
+            <div className="p-4 grid xl:grid-cols-5 md:grid-cols-4 gap-3">
                 {tabContent.map((product) => (
                     <div
                         onClick={() => handleProductClick(product)}
                         key={product.product_id}
-                        className="flex h-[200px] active:scale-105 transition-all flex-col items-center rounded-md border bg-white px-5 py-5"
+                        className="flex xl:h-[200px] h-[165px] active:scale-105 transition-all flex-col items-center rounded-md border bg-white xl:px-5 px-3 py-0"
                     >
-                        <div className="flex items-center justify-center">
-                            <Image className="w-40 h-24 object-contain" src={`/images/${product.image}`} alt={product.product_name} width={160} height={96} />
+                        <div className="flex items-center w-20 h-[50%] relative justify-center">
+                            <Image className="w-full h-full object-contain absolute" src={`/images/${product.image}`} alt={product.product_name} width={160} height={96} />
                         </div>
-                        <div className="flex flex-col h-[50%] items-center w-full">
-                            <h1 className="font-semibold w-full text-[16px] line-clamp-2 text-center">{product.product_name}</h1>
+                        <div className="flex space-y-1 pb-3 flex-col h-[50%] items-center justify-between w-full">
+                            <h1 className="font-medium w-full text-xs lg:text-[16px] line-clamp-2 text-center">{product.product_name}</h1>
                             <h1 className="font-bold text-lg">${product.price.toFixed(2)}</h1>
                         </div>
                     </div>
