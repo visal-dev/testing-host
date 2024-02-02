@@ -11,7 +11,7 @@ import {
     decreaseQuantity,
     increaseQuantity,
 } from '@/redux/productSlice'
-import { CircleDollarSign, Minus, Package, Plus, Trash } from 'lucide-react';
+import { CircleDollarSign, Minus, Package, Plus, Trash, X } from 'lucide-react';
 import Image from 'next/image';
 import PayModal from './pay-modal';
 
@@ -23,6 +23,7 @@ const PaymentOrder = () => {
     const { cart, subtotal, totalUSD, totalKhmerRiels, formattedTotalKhmerRiels } = useSelector(selectProduct);
 
     const [isPayOpen, setIsPayOpen] = useState(false)
+    const [isHoldOrder, setIsHoldOrder] = useState(false)
 
 
     const openModal = () => {
@@ -32,6 +33,10 @@ const PaymentOrder = () => {
     const closeModal = () => {
         setIsPayOpen(false);
     };
+
+    const handleToggleHoldOrder = () => {
+        setIsHoldOrder(!isHoldOrder);
+    }
 
 
     useEffect(() => {
@@ -144,11 +149,11 @@ const PaymentOrder = () => {
                         <div className="flex items-center justify-between">
                             <h1>Discount</h1>
                             <form className="flex w-fit gap-2 items-center rounded-md">
-                                <CircleDollarSign size={18} />
+                                <CircleDollarSign className='text-gray-400' size={18} />
                                 <input
                                     type="text"
                                     placeholder="Discount amount"
-                                    className="w-fit border h-9 rounded-md bg-transparent outline-none placeholder:text-sm"
+                                    className="w-fit pl-2 border h-9 rounded-md bg-transparent outline-none placeholder:text-sm"
                                     name="discount"
                                     id="discount"
                                 />
@@ -173,74 +178,49 @@ const PaymentOrder = () => {
                     <div className="">
                         <button
                             onClick={openModal}
-                            className="text-white w-full py-4 bg-green-700 hover:bg-green-800 active:scale-105 transition-all font-medium rounded-md text-sm px-5 text-center"
+                            className="text-white w-full mb-2 py-4 bg-green-700 hover:bg-green-800 active:scale-105 transition-all font-medium rounded-md text-sm px-5 text-center"
                             type="button"
                         >
                             Pay ($40.00)
                         </button>
-                        <PayModal isOpen={isPayOpen} onClose={closeModal} />
+                        <PayModal isOpen={isPayOpen} onClose={closeModal} >
+
+                        </PayModal>
 
 
                         <div className="flex items-center gap-2">
                             <button
+                                onClick={handleToggleHoldOrder}
                                 className="text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-md text-sm px-5 py-4 text-center dark:focus:ring-yellow-900 w-[50%]"
                                 type="button"
                             >
                                 Hold Order
                             </button>
 
-                            <div
-                                className="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
-                            >
-                                <div className="relative p-4 w-full max-w-md max-h-full">
-                                    <div
-                                        className="relative bg-white rounded-lg shadow dark:bg-gray-700"
-                                    >
-                                        <div
-                                            className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
-                                        >
-                                            <h3
-                                                className="text-xl font-semibold text-gray-900 dark:text-white"
-                                            >
-                                                Create Hold
-                                            </h3>
-                                            <button
-                                                type="button"
-                                                className="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                                data-modal-hide="hold-order-modal"
-                                            >
-
-                                                <span className="sr-only">Close modal</span>
-                                            </button>
+                            {isHoldOrder && (
+                                <>
+                                    <div onClick={handleToggleHoldOrder} className='fixed top-0 left-0 bg-black/65 w-full h-full z-40 transition-all duration-300' />
+                                    <div className='fixed top-1/2 left-1/2 transform -translate-x-1/2  transition-all duration-300 -translate-y-1/2 bg-white border border-gray-300 z-50 w-[30%] rounded-md max-h-3/4 h-auto overflow-auto'>
+                                        <div className='py-5 px-3 flex justify-between items-center border-b'>
+                                            <h1>Create Hold</h1>
+                                            <X onClick={handleToggleHoldOrder} />
                                         </div>
-                                        <div className="p-4 md:p-5">
-                                            <form className="space-y-4" action="#">
-                                                <div>
-                                                    <label
-                                                        htmlFor="title"
-                                                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                                    >Title</label>
-                                                    <input
-                                                        type="text"
-                                                        name="title"
-                                                        id="title"
-                                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                                        placeholder="Table-1"
-                                                        required
-                                                    />
-                                                </div>
-                                                <button
-                                                    type="submit"
-                                                    className="w-full flex items-center justify-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                                >
-
-                                                    Create Hold
-                                                </button>
-                                            </form>
-                                        </div>
+                                        <form className='px-3 py-3'>
+                                            <div className='flex flex-col gap-2'>
+                                                <label>Title</label>
+                                                <input
+                                                    className='border p-3 outline-none rounded-md'
+                                                    type="text"
+                                                    placeholder='Enter the title for hold order' />
+                                            </div>
+                                            <div className='flex items-center justify-end gap-3 pt-3'>
+                                                <button onClick={handleToggleHoldOrder} className='bg-red-600 text-white px-3 py-2 rounded-md hover:bg-red-500'>Cancel</button>
+                                                <button className='bg-green-600 text-white px-3 py-2 rounded-md hover:bg-green-500'>Create Hold</button>
+                                            </div>
+                                        </form>
                                     </div>
-                                </div>
-                            </div>
+                                </>
+                            )}
 
                             <button
                                 onClick={handleClearCart}

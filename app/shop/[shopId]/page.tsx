@@ -151,16 +151,15 @@ export default function PosPage({ params }: { params: { shopId: string } }) {
                         className="flex xl:h-[200px] h-[165px] active:scale-105 transition-all flex-col items-center rounded-md border bg-white xl:px-5 px-3 py-0"
                     >
                         <div className="flex items-center w-20 h-[50%] relative justify-center">
-                            <Image className="w-full h-full object-contain absolute" src={`/images/${product.image}`} alt={product.product_name} width={160} height={96} />
+                            <img className="w-full h-full object-contain absolute" src={product.image} alt={product.product_name} width={160} height={96} />
                         </div>
                         <div className="flex space-y-1 pb-3 flex-col h-[50%] items-center justify-between w-full">
-                            <h1 className="font-medium w-full text-xs lg:text-[16px] line-clamp-2 text-center">{product.product_name}</h1>
+                            <h1 className="font-medium w-full text-xs lg:text-[16px] line-clamp-2 h-12 text-center">{product.product_name}</h1>
                             <h1 className="font-bold text-lg">${product.price.toFixed(2)}</h1>
                         </div>
                     </div>
-
-
                 ))}
+
                 {isModalOpen && selectedProduct && selectedProduct.size && (
                     <div ref={modalRef} className="fixed top-1/2 left-1/2 transform -translate-x-1/2  transition-all duration-300 -translate-y-1/2 bg-white border border-gray-300 z-50 w-[40%] rounded-md max-h-3/4 h-[60%] overflow-auto">
                         <h2>{selectedProduct.product_name}</h2>
