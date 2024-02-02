@@ -17,6 +17,11 @@ interface CartItem {
   quantity: number;
 }
 
+interface AddToCartWithSizePayload {
+  product: Product;
+  size: string[];
+}
+
 const initialState: ProductState = {
   products: [],
   selectedProduct: null,
@@ -69,6 +74,42 @@ const productSlice = createSlice({
         item.product.price =
           item.product.product_id === productToAdd.product_id
             ? productToAdd.price * item.quantity
+            : item.product.price;
+
+        item.product.price = roundToTwoDecimalPlaces(item.product.price);
+      });
+
+      // Recalculate subtotal
+      state.subtotal = state.cart.reduce((total, item) => {
+        return total + item.product.price;
+      }, 0);
+
+      state.subtotal = roundToTwoDecimalPlaces(state.subtotal);
+    },
+
+    addToCartWithSize: (
+      state,
+      action: PayloadAction<AddToCartWithSizePayload>
+    ) => {
+      const { product, size } = action.payload;
+      const existingItemIndex = findCartItemIndex(state.cart, product);
+
+      if (existingItemIndex !== -1) {
+        // If item is already in the cart, update quantity
+        state.cart[existingItemIndex].quantity += 1;
+      } else {
+        // If item is not in the cart, add it with quantity 1
+        state.cart.push({
+          product: { ...product },
+          quantity: 1,
+        });
+      }
+
+      // Recalculate individual item prices
+      state.cart.forEach((item) => {
+        item.product.price =
+          item.product.product_id === product.product_id
+            ? product.price * item.quantity
             : item.product.price;
 
         item.product.price = roundToTwoDecimalPlaces(item.product.price);
@@ -175,6 +216,7 @@ export const {
   calculateTotalKhmerRiels,
   decreaseQuantity,
   increaseQuantity,
+  addToCartWithSize,
 } = productSlice.actions;
 export const selectProduct = (state: RootState) => state.product;
 
