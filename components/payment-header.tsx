@@ -1,6 +1,11 @@
-import { PackageOpen, Trash, UserPlus, X } from 'lucide-react'
+import { Minimize2, PackageOpen, Trash, UserPlus, X } from 'lucide-react'
 import React, { useState } from 'react'
 import Select from 'react-select';
+
+interface PaymentHeaderProps {
+    isOpen?: boolean;
+    onClose?: () => void;
+}
 
 const options = [
     { value: 'chocolate', label: 'Chocolate' },
@@ -100,7 +105,7 @@ const HOLD_ITEMS = [
     },
 ]
 
-const PaymentHeader = () => {
+const PaymentHeader: React.FC<PaymentHeaderProps> = ({ isOpen, onClose }) => {
 
     const [isOpenHold, setIsOpenHold] = useState(false)
     const [isAddNewCustomerOpen, setIsAddNewCustomerOpen] = useState(false)
@@ -116,11 +121,15 @@ const PaymentHeader = () => {
 
     return (
         <header className='h-14 bg-slate-700 px-3 w-full flex gap-2 items-center'>
+            <div onClick={onClose} className='md:hidden text-gray-900 whitespace-nowrap gap-2 bg-white hover:bg-gray-100 border border-gray-200 font-medium rounded text-sm  px-2 py-2 text-center inline-flex items-center cursor-pointer'>
+                <Minimize2 size={20} />
+            </div>
             <button onClick={handleToggleOpenHold} className='text-gray-900 whitespace-nowrap gap-2 bg-white hover:bg-gray-100 border border-gray-200 font-medium rounded text-sm px-2  py-2 md:text-xs text-center inline-flex items-center'><PackageOpen className='w-5 h-5' />Open Hold</button>
             {isOpenHold && (
                 <>
                     <div onClick={handleToggleOpenHold} className='fixed top-0 left-0 bg-black/65 w-full h-full z-40 transition-all duration-300' />
                     <div className='fixed top-1/2 left-1/2 transform -translate-x-1/2  transition-all duration-300 -translate-y-1/2 bg-white border border-gray-300 z-50 w-[40%] rounded-md h-[420px]'>
+
                         <div className='py-5 px-3 flex justify-between items-center border-b'>
                             <h1>Open Hold</h1>
                             <X onClick={handleToggleOpenHold} className='cursor-pointer' />

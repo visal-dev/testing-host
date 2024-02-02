@@ -81,9 +81,9 @@ const Navbar = () => {
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                             >
                                 <path
                                     d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
@@ -100,9 +100,9 @@ const Navbar = () => {
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                                 className="lucide lucide-user-cog"
                             >
                                 <circle cx="18" cy="15" r="3" />
@@ -132,9 +132,9 @@ const Navbar = () => {
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                                 className="lucide lucide-users"
                             >
                                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
@@ -153,9 +153,9 @@ const Navbar = () => {
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                                 className="lucide lucide-boxes"
                             >
                                 <path
@@ -188,9 +188,9 @@ const Navbar = () => {
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                                 className="lucide lucide-tag"
                             >
                                 <path
@@ -209,9 +209,9 @@ const Navbar = () => {
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                                 className="lucide lucide-file-line-chart"
                             >
                                 <path
@@ -235,9 +235,9 @@ const Navbar = () => {
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                                 className="lucide lucide-settings"
                             >
                                 <path
@@ -279,9 +279,9 @@ const Navbar = () => {
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                         className="lucide lucide-fullscreen"
                     >
                         <path d="M3 7V5a2 2 0 0 1 2-2h2" />

@@ -10,7 +10,7 @@ const PayModal: React.FC<PayModalProps> = ({ isOpen, onClose }) => {
     return isOpen && (
         <>
             <div onClick={onClose} className='fixed top-0 left-0 bg-black/65 w-full h-full z-40 transition-all duration-300' />
-            <div className='fixed top-1/2 transition-all duration-300 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border border-gray-300 z-50 w-[60%] xl:w-[50%] rounded-md h-auto'>
+            <div className='fixed top-1/2 transition-all duration-300 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border border-gray-300 z-50 md:w-[60%] w-full  xl:w-[50%] rounded-md h-auto'>
                 <div
                     className="bg-white w-full h-full rounded-lg shadow"
                 >
@@ -71,7 +71,7 @@ const PayModal: React.FC<PayModalProps> = ({ isOpen, onClose }) => {
                                                 type="text"
                                                 className="w-full border p-2 outline-none"
                                             />
-                                            <div className="grid grid-cols-4 gap-2">
+                                            <div className="grid md:grid-cols-4 grid-cols-2 gap-2">
                                                 <button
                                                     className="w-full rounded-md border bg-slate-50 px-2 py-2"
                                                 >
@@ -133,7 +133,7 @@ const PayModal: React.FC<PayModalProps> = ({ isOpen, onClose }) => {
                                 Acleda
                             </button>
                             <button
-                                className="text-white bg-[#255a77] hover:bg-[#255a77]/90 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center"
+                                className="text-white ml-1 mr-1 bg-[#255a77] hover:bg-[#255a77]/90 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center"
                             >
                                 ABA
                             </button>
