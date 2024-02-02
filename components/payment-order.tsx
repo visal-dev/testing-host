@@ -96,7 +96,7 @@ const PaymentOrder = () => {
                                         >
                                             <h1 className="font-semibold text-sm line-clamp-1">{item.product.product_name}</h1>
                                             <p className="text-sm font-medium">${item.product.price}</p>
-                                            <div className="flex items-center gap-1">
+                                            <div className="flex items-center xl:gap-1">
                                                 <button
                                                     onClick={() => handleDecreaseQuantity(item.product.product_id)}
                                                     className="text-gray-900 gap-2 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-1 py-1 text-center inline-flex items-center"
@@ -115,15 +115,15 @@ const PaymentOrder = () => {
                                                     <Plus size={18} />
                                                 </button>
                                             </div>
-                                            <div className="flex justify-center pl-4 items-center rounded-md">
+                                            <div className="flex justify-center pl-1 items-center rounded-md">
                                                 <input
                                                     type="text"
-                                                    className="w-16 h-8 outline-none border bg-slate-50 px-2 rounded-md"
+                                                    className="w-14 h-8 outline-none border bg-slate-50 px-2 rounded-md"
                                                     name="discount"
                                                     id="discount"
                                                 />
                                             </div>
-                                            <div className="flex justify-end">
+                                            <div className="flex w-fit justify-end">
                                                 <button
                                                     onClick={() => handleRemoveFromCart(item.product.product_id)}
                                                     className="text-gray-900 gap-2 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-1 py-1 text-center inline-flex items-center "

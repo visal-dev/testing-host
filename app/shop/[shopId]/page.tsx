@@ -146,7 +146,7 @@ export default function PosPage({ params }: { params: { shopId: string } }) {
                     ))}
                 </div>
             </div>
-            <div className="p-4 grid grid-cols-2 xl:grid-cols-5 md:grid-cols-4 gap-3 h-full md:h-[calc(100%-120px)] overflow-y-auto scrollbar-hide">
+            <div className="p-4 grid grid-cols-2 xl:grid-cols-5 md:grid-cols-4 gap-3 md:h-[calc(100%-120px)] h-[calc(100%-150px)] overflow-y-auto scrollbar-hide">
                 {tabContent.map((product) => (
                     <div
                         onClick={() => handleProductClick(product)}
@@ -157,7 +157,7 @@ export default function PosPage({ params }: { params: { shopId: string } }) {
                             <img className="w-full h-full object-contain absolute" src={product.image} alt={product.product_name} width={160} height={96} />
                         </div>
                         <div className="flex space-y-1 pb-3 flex-col h-[50%] items-center justify-between w-full">
-                            <h1 className="font-medium w-full text-xs lg:text-[16px] line-clamp-2 h-12 text-center">{product.product_name}</h1>
+                            <h1 className="font-medium w-full text-xs lg:text-[16px] line-clamp-2 h-auto text-center">{product.product_name}</h1>
                             <h1 className="font-bold text-lg">${product.price.toFixed(2)}</h1>
                         </div>
                     </div>
