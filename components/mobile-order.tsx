@@ -59,7 +59,7 @@ const MobileOrder = () => {
     }
     return (
         <>
-            <div className='fixed md:hidden bottom-0 w-full px-4 py-3 flex items-center gap-3'>
+            <div className='fixed md:hidden bottom-0 w-full px-4 pb-6 flex items-center gap-3'>
                 <div onClick={handleToggleModal} className='bg-[#061829] text-white px-6 rounded-full py-3 flex items-center justify-between w-full'>
                     <div className='flex items-center gap-2'>
                         <ShoppingCart />
