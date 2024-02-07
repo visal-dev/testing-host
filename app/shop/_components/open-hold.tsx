@@ -101,7 +101,7 @@ const OpenHold = () => {
                 <DialogHeader>
                     <DialogTitle>Create a customer</DialogTitle>
                     <DialogDescription>
-                        Make changes to your profile here. Click save when you're done.
+                        Make changes to your profile here. Click save when you&apos;re done.
                     </DialogDescription>
                 </DialogHeader>
                 <ScrollArea className="h-72 w-full rounded-md border">
