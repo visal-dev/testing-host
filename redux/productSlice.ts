@@ -29,7 +29,7 @@ const initialState: ProductState = {
   subtotal: 0,
   totalUSD: 0,
   totalKhmerRiels: 0,
-  formattedTotalKhmerRiels: "",
+  formattedTotalKhmerRiels: "KHR 0.00",
 };
 
 const findCartItemIndex = (cartItems: CartItem[], product: Product): number => {

@@ -14,6 +14,30 @@ import {
 import { CircleDollarSign, Minus, Package, Plus, Trash, X } from 'lucide-react';
 import Image from 'next/image';
 import PayModal from './pay-modal';
+import { Button } from "@/components/ui/button"
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+
 
 
 
@@ -188,47 +212,53 @@ const PaymentOrder = () => {
                         </PayModal>
 
 
-                        <div className="flex items-center gap-2">
-                            <button
-                                onClick={handleToggleHoldOrder}
-                                className="text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-md text-sm px-5 py-4 text-center dark:focus:ring-yellow-900 w-[50%]"
-                                type="button"
-                            >
-                                Hold Order
-                            </button>
-
-                            {isHoldOrder && (
-                                <>
-                                    <div onClick={handleToggleHoldOrder} className='fixed top-0 left-0 bg-black/65 w-full h-full z-40 transition-all duration-300' />
-                                    <div className='fixed top-1/2 left-1/2 transform -translate-x-1/2  transition-all duration-300 -translate-y-1/2 bg-white border border-gray-300 z-50 w-[30%] rounded-md max-h-3/4 h-auto overflow-auto'>
-                                        <div className='py-5 px-3 flex justify-between items-center border-b'>
-                                            <h1>Create Hold</h1>
-                                            <X onClick={handleToggleHoldOrder} />
+                        <div className="w-full flex items-center gap-2">
+                            <Dialog >
+                                <DialogTrigger asChild className='w-full'>
+                                    <Button size={'xl'} variant="outline">Hold</Button>
+                                </DialogTrigger>
+                                <DialogContent className="sm:max-w-[425px]">
+                                    <DialogHeader>
+                                        <DialogTitle>Create Hold</DialogTitle>
+                                        <DialogDescription>
+                                            Make changes to your profile here. Click save when you're done.
+                                        </DialogDescription>
+                                    </DialogHeader>
+                                    <div className="grid gap-4">
+                                        <div className="">
+                                            <Label htmlFor="name" className="text-right">
+                                                Title
+                                            </Label>
+                                            <Input id="name" className="py-5" />
                                         </div>
-                                        <form className='px-3 py-3'>
-                                            <div className='flex flex-col gap-2'>
-                                                <label>Title</label>
-                                                <input
-                                                    className='border p-3 outline-none rounded-md'
-                                                    type="text"
-                                                    placeholder='Enter the title for hold order' />
-                                            </div>
-                                            <div className='flex items-center justify-end gap-3 pt-3'>
-                                                <button onClick={handleToggleHoldOrder} className='bg-red-600 text-white px-3 py-2 rounded-md hover:bg-red-500'>Cancel</button>
-                                                <button className='bg-green-600 text-white px-3 py-2 rounded-md hover:bg-green-500'>Create Hold</button>
-                                            </div>
-                                        </form>
                                     </div>
-                                </>
-                            )}
+                                    <DialogFooter>
+                                        <Button type="submit">Save changes</Button>
+                                    </DialogFooter>
+                                </DialogContent>
+                            </Dialog>
 
-                            <button
-                                onClick={handleClearCart}
-                                className="w-[50%] focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-md text-sm px-5 py-4 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-                                type="button"
-                            >
-                                Reset Order
-                            </button>
+                            <Button size={'xl'} className='w-full'>Print</Button>
+
+                            <AlertDialog>
+                                <AlertDialogTrigger asChild>
+                                    <Button size={'xl'} className='w-full' variant="destructive">Reset</Button>
+                                </AlertDialogTrigger>
+                                <AlertDialogContent>
+                                    <AlertDialogHeader>
+                                        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                        <AlertDialogDescription>
+                                            This action cannot be undone. This will permanently delete your account
+                                            and remove your data from our servers.
+                                        </AlertDialogDescription>
+                                    </AlertDialogHeader>
+                                    <AlertDialogFooter>
+                                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                        <AlertDialogAction>Continue</AlertDialogAction>
+                                    </AlertDialogFooter>
+                                </AlertDialogContent>
+                            </AlertDialog>
+
                         </div>
                     </div>
                 </div>

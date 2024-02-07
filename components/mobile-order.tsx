@@ -75,7 +75,7 @@ const MobileOrder = () => {
                 isOpenMobilePayment && (
                     <div className='fixed md:hidden top-0 bg-white left-0 w-full h-full'>
                         <div className='w-full flex items-center flex-col justify-between'>
-                            <PaymentHeader onClose={handleToggleModal} />
+                            {/* <PaymentHeader onClose={handleToggleModal} /> */}
                             <div
                                 className="text-black/65 border w-full flex items-center h-14"
                             >

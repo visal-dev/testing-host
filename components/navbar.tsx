@@ -1,12 +1,13 @@
 'use client'
-import { ArrowLeftToLine, Menu as MenuIcon, Search, Wifi, X } from 'lucide-react'
+import { Airplay, ArrowLeftToLine, Menu as MenuIcon, Search, Wifi, X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { toggleFullScreen } from '@/redux/fullScreenSlice';
+import UserProfile from '@/app/shop/_components/user-profile'
 
-
+const username = 'chivanvisal'
 
 const Navbar = () => {
 
@@ -261,16 +262,11 @@ const Navbar = () => {
             </form>
 
             <div className='flex items-center gap-3'>
-
+                <Link href={'/shop/chivanvisal'} target='_parent'>
+                    <Airplay />
+                </Link>
                 <Wifi className={isOnline ? 'text-green-600' : 'text-red-600 animate-pulse'} />
-                <div className='relative' ref={dropdownRef}>
-                    <div onClick={() => setIsProfileOpen(!isProfileOpen)} className='w-9 h-9 rounded-full relative cursor-pointer'>
-                        <Image width={36} height={36} className='absolute w-full h-full rounded-full object-cover' src="/profile.jpg" alt="" />
-                    </div>
-                    <div className={isProfileOpen ? 'w-56 right-0 top-12 rounded-md transition-all duration-200 bg-[#061829] text-white h-48 absolute' : 'hidden'}>
-                        <h1>chivanvisal</h1>
-                    </div>
-                </div>
+                <UserProfile />
                 <button onClick={handleToggleFullScreen} className='text-white/60' type="button">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
