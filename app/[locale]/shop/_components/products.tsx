@@ -25,7 +25,7 @@ const tabs = [
     { label: 'Sweets', queryType: 'sweet' },
 ];
 
-export default function PosPage({ params }: { params: { shopId: string } }) {
+export default function Products() {
     const dispatch = useDispatch();
     const { selectedProduct, cart } = useSelector(selectProduct);
     const [activeTab, setActiveTab] = useState(0);
@@ -133,7 +133,7 @@ export default function PosPage({ params }: { params: { shopId: string } }) {
 
     return (
         <div className="w-full h-[calc(100%-56px)]">
-            <div className="h-14 px-4 bg-slate-200 max-w-full overflow-x-auto overflow-y-hidden scrollbar-hide">
+            <div className="h-14 px-4 absolute z-50 mt-14 md:static md:z-0 md:mt-0 bg-slate-200 max-w-full overflow-x-auto overflow-y-hidden scrollbar-hide">
                 <div className='gap-3 h-full flex items-center w-full xl:w-fit'>
                     {tabs.map((tab, index) => (
                         <button
@@ -146,7 +146,7 @@ export default function PosPage({ params }: { params: { shopId: string } }) {
                     ))}
                 </div>
             </div>
-            <div className="p-4 grid grid-cols-2 xl:grid-cols-5 md:grid-cols-4 gap-3 md:h-[calc(100%-120px)] h-[calc(100%-150px)] overflow-y-auto scrollbar-hide">
+            <div className="p-4 grid grid-cols-2 md:pt-3 pt-[122px] xl:grid-cols-5 md:grid-cols-4 gap-3 md:h-[calc(100%-120px)] h-full overflow-y-auto scrollbar-hide">
                 {tabContent.map((product) => (
                     <div
                         onClick={() => handleProductClick(product)}

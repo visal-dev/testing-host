@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import PaymentHeader from './payment-header'
+import PaymentHeader from '@/app/[locale]/shop/_components/payment-header'
 import { useSelector, useDispatch } from 'react-redux';
 import {
     selectProduct,
@@ -13,7 +13,7 @@ import {
 } from '@/redux/productSlice'
 import { CircleDollarSign, Minus, Package, Plus, Trash, X } from 'lucide-react';
 import Image from 'next/image';
-import PayModal from './pay-modal';
+import { PayModal } from '@/app/[locale]/shop/_components/pay-modal';
 import { Button } from "@/components/ui/button"
 import {
     Dialog,
@@ -37,31 +37,20 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-
-
-
+import Link from 'next/link';
+import { useLocale, useTranslations } from 'next-intl';
+import PaymentTableHeader from './payment-table-header';
+import CreateHoldModal from './create-hold-modal';
 
 const PaymentOrder = () => {
 
     const dispatch = useDispatch();
-    const { cart, subtotal, totalUSD, totalKhmerRiels, formattedTotalKhmerRiels } = useSelector(selectProduct);
-
-    const [isPayOpen, setIsPayOpen] = useState(false)
-    const [isHoldOrder, setIsHoldOrder] = useState(false)
+    const { cart, subtotal, totalUSD, formattedTotalKhmerRiels } = useSelector(selectProduct);
 
 
-    const openModal = () => {
-        setIsPayOpen(true);
-    };
+    const localActive = useLocale()
 
-    const closeModal = () => {
-        setIsPayOpen(false);
-    };
-
-    const handleToggleHoldOrder = () => {
-        setIsHoldOrder(!isHoldOrder);
-    }
-
+    const t = useTranslations('Payment')
 
     useEffect(() => {
         dispatch(calculateTotalUSD());
@@ -74,11 +63,7 @@ const PaymentOrder = () => {
         dispatch(calculateTotalKhmerRiels());
     };
 
-    const handleClearCart = () => {
-        dispatch(clearCart());
-        dispatch(calculateTotalUSD());
-        dispatch(calculateTotalKhmerRiels());
-    };
+
 
     const handleIncreaseQuantity = (productId: number) => {
         dispatch(increaseQuantity(productId));
@@ -91,25 +76,13 @@ const PaymentOrder = () => {
     return (
         <div className='w-full h-full'>
             <PaymentHeader />
-            <div
-                className="text-black/65 border w-full flex items-center h-14"
-            >
-                <div
-                    className="grid items-center font-semibold text-xs text-center w-full grid-cols-5"
-                >
-                    <p>Name</p>
-                    <p>Total Price</p>
-                    <p>Qty</p>
-                    <p>Discount</p>
-                    <p>Actions</p>
-                </div>
-            </div>
+            <PaymentTableHeader />
             <div className="flex h-[calc(100vh-108px)] flex-col justify-between">
                 <div className="h-[calc(100%-50%)] overflow-y-auto px-3 scrollbar-hide">
                     <div className="h-full space-y-1 py-2">
                         {cart.length === 0 ? <div className='w-full h-full flex  flex-col items-center justify-center'>
                             <Package size={40} className='text-gray-400' />
-                            <p>No items</p>
+                            <p>{t('noItemMessage')}</p>
                         </div>
                             : <>
                                 {
@@ -167,11 +140,11 @@ const PaymentOrder = () => {
                 >
                     <div className="w-full text-black py-6">
                         <div className="flex items-center justify-between">
-                            <h1>Subtotal</h1>
+                            <h1>{t('subTotalMessage')}</h1>
                             <h2>${subtotal}</h2>
                         </div>
                         <div className="flex items-center justify-between">
-                            <h1>Discount</h1>
+                            <h1>{t('discountMessage')}</h1>
                             <form className="flex w-fit gap-2 items-center rounded-md">
                                 <CircleDollarSign className='text-gray-400' size={18} />
                                 <input
@@ -185,64 +158,36 @@ const PaymentOrder = () => {
                             <h2>-$0.00</h2>
                         </div>
                         <div className="flex items-center justify-between">
-                            <h1>Tax</h1>
+                            <h1>{t('taxMessage')}</h1>
                             <h2>$0.00</h2>
                         </div>
                         <div>
                             <div className="flex items-center justify-between font-semibold">
-                                <h1>Total USD</h1>
+                                <h1>{t('totalUSD')}</h1>
                                 <h2>${totalUSD}</h2>
                             </div>
                             <div className="flex items-center justify-between font-semibold">
-                                <h1>Total Khmer</h1>
+                                <h1>{t('totalKhmer')}</h1>
                                 <h2>{formattedTotalKhmerRiels}</h2>
                             </div>
                         </div>
                     </div>
-                    <div className="">
-                        <button
-                            onClick={openModal}
-                            className="text-white w-full mb-2 py-4 bg-green-700 hover:bg-green-800 active:scale-105 transition-all font-medium rounded-md text-sm px-5 text-center"
-                            type="button"
-                        >
-                            Pay ($40.00)
-                        </button>
-                        <PayModal isOpen={isPayOpen} onClose={closeModal} >
 
-                        </PayModal>
+
+                    <div className="">
+                        <PayModal />
 
 
                         <div className="w-full flex items-center gap-2">
-                            <Dialog >
-                                <DialogTrigger asChild className='w-full'>
-                                    <Button size={'xl'} variant="outline">Hold</Button>
-                                </DialogTrigger>
-                                <DialogContent className="sm:max-w-[425px]">
-                                    <DialogHeader>
-                                        <DialogTitle>Create Hold</DialogTitle>
-                                        <DialogDescription>
-                                            Make changes to your profile here. Click save when you&apos;re done.
-                                        </DialogDescription>
-                                    </DialogHeader>
-                                    <div className="grid gap-4">
-                                        <div className="">
-                                            <Label htmlFor="name" className="text-right">
-                                                Title
-                                            </Label>
-                                            <Input id="name" className="py-5" />
-                                        </div>
-                                    </div>
-                                    <DialogFooter>
-                                        <Button type="submit">Save changes</Button>
-                                    </DialogFooter>
-                                </DialogContent>
-                            </Dialog>
+                            <CreateHoldModal />
 
-                            <Button size={'xl'} className='w-full'>Print</Button>
+                            <Link href={`/${localActive}/shop/chivanvisal/receipt`} >
+                                <Button variant={'default'} className='w-full' size={'xl'}>{t('printButton')}</Button>
+                            </Link>
 
                             <AlertDialog>
                                 <AlertDialogTrigger asChild>
-                                    <Button size={'xl'} className='w-full' variant="destructive">Reset</Button>
+                                    <Button size={'xl'} className='w-full' variant="destructive">{t('resetButton')}</Button>
                                 </AlertDialogTrigger>
                                 <AlertDialogContent>
                                     <AlertDialogHeader>
@@ -258,7 +203,6 @@ const PaymentOrder = () => {
                                     </AlertDialogFooter>
                                 </AlertDialogContent>
                             </AlertDialog>
-
                         </div>
                     </div>
                 </div>

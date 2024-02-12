@@ -1,0 +1,41 @@
+{
+  "Navbar": {
+    "searchPlaceholder": "ស្វែងរកទំនិញ ឬស្កេនបាកូត..."
+  },
+  "Payment": {
+    "payButton": "បញ្ជាទិញ",
+    "printButton": "វិកាយប័ត្ត",
+    "resetButton": "លុបចេញ",
+    "noItemMessage": "គ្មានទំនិញ",
+    "subTotalMessage": "សរុបរង",
+    "discountMessage": "បញ្ចុះតម្លៃ",
+    "taxMessage": "ពន្ធ",
+    "totalUSD": "សរុប USD",
+    "totalKhmer": "សរុប Khmer"
+  },
+  "PaymentHeader": {
+    "openHold": "កក់ទុក",
+    "openHoldTitle": "ការបញ្ជាទិញទំនិញទាំងអស់",
+    "searchCustomer": "ស្វែងរកអតិថិជន",
+    "createCustomer": "បន្ថែមភ្ញៀវថ្មី",
+    "createCustomerDescription": "បំពេញទិន្នន័យខាងក្រោម រួចចុចពាក្យថាបន្ថែមភ្ញៀវ",
+    "lastName": "នាម ត្រកូល",
+    "firstName": "នាម ខ្លួន",
+    "email": "អីម៉ែល",
+    "telephone": "លេខទូរស័ព្ទ",
+    "gender": "ភេទ",
+    "selectGender": "ជ្រើសរើសភេទ",
+    "male": "បុរស",
+    "female": "ស្ត្រី",
+    "createCustomerButton": "បន្ថែមភ្ញៀវ",
+    "tableName": "ឈ្មោះ",
+    "tableTotalPrice": "តម្លៃសរុប",
+    "tableQty": "ចំនួន",
+    "tableDiscount": "បញ្ចុះតម្លៃ",
+    "tableAction": "សកម្មភាព",
+    "createHold": "រក្សាទុកការបញ្ជាទិញទំនិញ",
+    "holdButton": "រក្សាទុក",
+    "createHoldDescription": "Make changes to your profile here. Click save when you're done.",
+    "createHoldTitle": "តើចងហៅការរក្សាទុកនេះបែបណា?"
+  }
+}

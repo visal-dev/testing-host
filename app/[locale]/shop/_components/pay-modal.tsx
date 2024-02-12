@@ -1,26 +1,37 @@
-import Image from 'next/image'
-import React, { useState } from 'react'
+import { Button } from "@/components/ui/button"
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { useLocale, useTranslations } from "next-intl"
+import Image from "next/image"
 
-interface PayModalProps {
-    isOpen: boolean;
-    onClose: () => void;
-}
-const PayModal: React.FC<PayModalProps> = ({ isOpen, onClose }) => {
+export function PayModal() {
 
-    return isOpen && (
-        <>
-            <div onClick={onClose} className='fixed top-0 left-0 bg-black/65 w-full h-full z-40 transition-all duration-300' />
-            <div className='fixed top-1/2 transition-all duration-300 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border border-gray-300 z-50 md:w-[60%] w-full  xl:w-[50%] rounded-md h-auto'>
-                <div
-                    className="bg-white w-full h-full rounded-lg shadow"
-                >
+    const localActive = useLocale()
+
+    const t = useTranslations('Payment')
+    return (
+        <Dialog>
+            <DialogTrigger asChild>
+                <Button variant="pay" className="w-full mb-2" size={"xl"}>{t('payButton')}($0.00)</Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px] lg:max-w-[70%] h-[90%]">
+                <div className="grid gap-4 py-4">
                     <div className="p-4 md:p-5 space-y-4">
                         <div
                             className="modal-box flex flex-col items-center justify-center"
                         >
                             <div className="flex w-full flex-col text-center">
                                 <div
-                                    className="w-full rounded-md bg-[#061829] py-2 text-white"
+                                    className="w-full rounded-md bg-[#061829] py-5 text-white"
                                 >
                                     <h3 className="text-5xl font-bold">$40.00</h3>
                                 </div>
@@ -161,7 +172,6 @@ const PayModal: React.FC<PayModalProps> = ({ isOpen, onClose }) => {
                         </div>
                         <div className="flex items-center">
                             <button
-                                onClick={onClose}
                                 type="button"
                                 className="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
                             >
@@ -177,9 +187,10 @@ const PayModal: React.FC<PayModalProps> = ({ isOpen, onClose }) => {
                         </div>
                     </div>
                 </div>
-            </div>
-        </>
+                {/* <DialogFooter>
+                    <Button type="submit">Save changes</Button>
+                </DialogFooter> */}
+            </DialogContent>
+        </Dialog>
     )
 }
-
-export default PayModal

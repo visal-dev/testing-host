@@ -15,6 +15,7 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover"
 import { cn } from "@/lib/utils"
+import { useTranslations } from "next-intl"
 
 const frameworks = [
     {
@@ -45,6 +46,9 @@ const SearchCustomer = () => {
     const [open, setOpen] = useState(false)
     const [value, setValue] = useState("")
 
+    const t = useTranslations('PaymentHeader')
+
+
     return (
         <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
@@ -56,13 +60,13 @@ const SearchCustomer = () => {
                 >
                     {value
                         ? frameworks.find((framework) => framework.value === value)?.label
-                        : "Select framework..."}
+                        : `${t('searchCustomer')}`}
                     <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>
             </PopoverTrigger>
             <PopoverContent className="w-full p-0">
                 <Command className='w-[280px]'>
-                    <CommandInput placeholder="Search framework..." className="h-9" />
+                    <CommandInput placeholder={t('searchCustomer')} className="h-9" />
                     <CommandEmpty>No framework found.</CommandEmpty>
                     <CommandGroup>
                         {frameworks.map((framework) => (

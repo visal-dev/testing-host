@@ -1,12 +1,14 @@
 import { Minimize2 } from 'lucide-react'
 import React from 'react'
 
-import AddCustomer from '@/app/shop/_components/add-customer'
-import OpenHold from '@/app/shop/_components/open-hold'
-import SearchCustomer from '@/app/shop/_components/search-customer'
+import AddCustomer from '@/app/[locale]/shop/_components/add-customer'
+import OpenHold from '@/app/[locale]/shop/_components/open-hold'
+import SearchCustomer from '@/app/[locale]/shop/_components/search-customer'
 
 
-const PaymentHeader: React.FC = () => {
+const PaymentHeader = () => {
+
+
 
     return (
         <header className='h-14 bg-slate-700 px-3 w-full flex gap-2 items-center'>

@@ -13,6 +13,7 @@ import { Label } from "@/components/ui/label"
 import { Button } from '@/components/ui/button'
 import { PackageOpen, Trash } from 'lucide-react'
 import { ScrollArea } from '@/components/ui/scroll-area'
+import { useTranslations } from 'next-intl'
 
 const HOLD_ITEMS = [
     {
@@ -91,15 +92,18 @@ const HOLD_ITEMS = [
 
 const OpenHold = () => {
 
+    const t = useTranslations('PaymentHeader')
+
+
     return (
 
         <Dialog>
             <DialogTrigger asChild>
-                <Button variant="outline"><PackageOpen size={20} className='mr-2' />Open hold</Button>
+                <Button variant="outline"><PackageOpen size={20} className='mr-2' lang='khmer' />{t('openHold')}</Button>
             </DialogTrigger>
             <DialogContent className="w-full">
                 <DialogHeader>
-                    <DialogTitle>Create a customer</DialogTitle>
+                    <DialogTitle>{t('openHoldTitle')}</DialogTitle>
                     <DialogDescription>
                         Make changes to your profile here. Click save when you&apos;re done.
                     </DialogDescription>

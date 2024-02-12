@@ -1,0 +1,42 @@
+{
+  "Navbar": {
+    "searchPlaceholder": "Search Products and Scan Barcode..."
+  },
+  "Payment": {
+    "payButton": "Pay",
+    "printButton": "Print",
+    "resetButton": "Reset",
+    "noItemMessage": "No Items",
+    "subTotalMessage": "Subtotal",
+    "discountMessage": "Discount",
+    "taxMessage": "Tax",
+    "totalUSD": "Total USD",
+    "totalKhmer": "Total Khmer"
+  },
+  "PaymentHeader": {
+    "openHold": "Open Hold",
+    "openHoldTitle": "Hold Order List",
+    "openHoldDescription": "You can take a hold item back by click on it.",
+    "searchCustomer": "Search customer...",
+    "createCustomer": "Create a customer",
+    "createCustomerDescription": "Fullfil the form down below. Click save when you're done.",
+    "lastName": "Last Name",
+    "firstName": "First Name",
+    "email": "Email",
+    "telephone": "Telephone",
+    "gender": "Gender",
+    "selectGender": "Select a gender",
+    "male": "Male",
+    "female": "Female",
+    "createCustomerButton": "Create Customer",
+    "tableName": "Name",
+    "tableTotalPrice": "Total Price",
+    "tableQty": "Qty",
+    "tableDiscount": "Discount",
+    "tableAction": "Actions",
+    "createHold": "Create Hold",
+    "holdButton": "Hold",
+    "createHoldDescription": "Make changes to your profile here. Click save when you're done.",
+    "createHoldTitle": "What do you want to call it?"
+  }
+}
