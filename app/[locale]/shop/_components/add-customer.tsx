@@ -20,8 +20,12 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { UserPlus } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 const AddCustomer = () => {
+
+    const t = useTranslations('PaymentHeader')
+
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -29,56 +33,56 @@ const AddCustomer = () => {
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
-                    <DialogTitle>Create a customer</DialogTitle>
+                    <DialogTitle>{t('createCustomer')}</DialogTitle>
                     <DialogDescription>
-                        Make changes to your profile here. Click save when you&apos;re done.
+                        {t('createCustomerDescription')}
                     </DialogDescription>
                 </DialogHeader>
                 <div className='grid grid-cols-2 gap-3'>
                     <div className='flex flex-col gap-2'>
-                        <Label className='font-medium'>First Name</Label>
+                        <Label className='font-medium'>{t('firstName')}</Label>
                         <Input
                             className='border p-3 outline-none rounded-md'
                             type="text" />
                     </div>
                     <div className='flex flex-col gap-2'>
-                        <Label className='font-medium'>Last Name</Label>
+                        <Label className='font-medium'>{t('lastName')}</Label>
                         <Input
                             className='border p-3 outline-none rounded-md'
                             type="text" />
                     </div>
                 </div>
                 <div className='flex flex-col gap-2'>
-                    <Label className='font-medium'>Email</Label>
+                    <Label className='font-medium'>{t('email')}</Label>
                     <Input
                         className='border p-3 outline-none rounded-md'
                         type="email" />
                 </div>
                 <div className='grid grid-cols-2 gap-3'>
                     <div className='flex flex-col gap-2'>
-                        <Label className='font-medium'>Telephone</Label>
+                        <Label className='font-medium'>{t('telephone')}</Label>
                         <Input
                             className='border p-3 outline-none rounded-md'
                             type="text" />
                     </div>
                     <div className='flex flex-col gap-2'>
-                        <Label className='font-medium'>Gender</Label>
+                        <Label className='font-medium'>{t('gender')}</Label>
                         <Select>
                             <SelectTrigger className="w-[180px]">
-                                <SelectValue placeholder="Select a gender" />
+                                <SelectValue placeholder={t('selectGender')} />
                             </SelectTrigger>
                             <SelectContent>
                                 <SelectGroup>
-                                    <SelectLabel>Gender</SelectLabel>
-                                    <SelectItem value="male">Male</SelectItem>
-                                    <SelectItem value="female">Female</SelectItem>
+                                    <SelectLabel>{t('gender')}</SelectLabel>
+                                    <SelectItem value="male">{t('male')}</SelectItem>
+                                    <SelectItem value="female">{t('female')}</SelectItem>
                                 </SelectGroup>
                             </SelectContent>
                         </Select>
                     </div>
                 </div>
                 <DialogFooter>
-                    <Button type="submit">Save changes</Button>
+                    <Button type="submit">{t('createCustomerButton')}</Button>
                 </DialogFooter>
             </DialogContent>
         </Dialog>

@@ -37,5 +37,14 @@
     "holdButton": "រក្សាទុក",
     "createHoldDescription": "Make changes to your profile here. Click save when you're done.",
     "createHoldTitle": "តើចងហៅការរក្សាទុកនេះបែបណា?"
+  },
+  "Sidebar": {
+    "dashboard": "ផ្ទាំងគ្រប់គ្រង",
+    "users": "អ្នកប្រើប្រាស់",
+    "customers": "អតិថិជន",
+    "Items": "ទំនិញ",
+    "categories": "ប្រភេទ",
+    "reports": "របាយការណ៍",
+    "settings": "ការកំណត់"
   }
 }

@@ -12,10 +12,12 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet"
 import { ArrowLeftToLine, MenuIcon } from "lucide-react"
+import { useTranslations } from "next-intl"
 import Image from "next/image"
 import Link from "next/link"
 
 export function Sidebar() {
+    const t = useTranslations('Sidebar')
     return (
         <Sheet >
             <SheetTrigger asChild>
@@ -48,7 +50,7 @@ export function Sidebar() {
                                 />
                                 <polyline points="9 22 9 12 15 12 15 22" />
                             </svg>
-                            Dashboard
+                            {t('dashboard')}
                         </Link>
                         <Link href="" className="flex items-center gap-x-3.5 py-2 px-6 text-sm text-white/80 hover:bg-[#153153] ">
                             <svg
@@ -75,14 +77,14 @@ export function Sidebar() {
                                 <path d="m14.3 16.6 1-.4" />
                                 <path d="m20.7 13.8 1-.4" />
                             </svg>
-                            Users
+                            {t('users')}
                         </Link>
 
                         <h1 className="text-sm font-semibold text-gray-500 pl-3 py-2">
                             System
                         </h1>
 
-                        <Link href="" className="flex items-center bg-[#153153] gap-x-3.5 py-2 px-6 text-sm text-white/80 hover:bg-[#153153] ">
+                        <Link href="" className="flex items-center  gap-x-3.5 py-2 px-6 text-sm text-white/80 hover:bg-[#153153] ">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="18"
@@ -100,7 +102,7 @@ export function Sidebar() {
                                 <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
                                 <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                             </svg>
-                            Customers
+                            {t('customers')}
                         </Link>
 
                         <Link href="" className="flex items-center gap-x-3.5 py-2 px-6 text-sm text-white/80 hover:bg-[#153153] ">
@@ -135,7 +137,7 @@ export function Sidebar() {
                                 <path d="m12 8 4.74-2.85" />
                                 <path d="M12 13.5V8" />
                             </svg>
-                            Items
+                            {t('items')}
                         </Link>
 
                         <Link href="" className="flex items-center gap-x-3.5 py-2 px-6 text-sm text-white/80 hover:bg-[#153153] ">
@@ -156,7 +158,7 @@ export function Sidebar() {
                                 />
                                 <path d="M7 7h.01" />
                             </svg>
-                            Category
+                            {t('categories')}
                         </Link>
 
                         <Link href="" className="flex items-center gap-x-3.5 py-2 px-6 text-sm text-white/80 hover:bg-[#153153] ">
@@ -178,7 +180,7 @@ export function Sidebar() {
                                 <path d="M14 2v4a2 2 0 0 0 2 2h4" />
                                 <path d="m16 13-3.5 3.5-2-2L8 17" />
                             </svg>
-                            Reports
+                            {t('reports')}
                         </Link>
 
                         <h1 className="text-sm font-semibold text-gray-500 pl-3 py-2">
@@ -203,7 +205,7 @@ export function Sidebar() {
                                 />
                                 <circle cx="12" cy="12" r="3" />
                             </svg>
-                            Settings
+                            {t('settings')}
                         </Link>
                     </ul>
                 </div>

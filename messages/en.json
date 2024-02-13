@@ -38,5 +38,14 @@
     "holdButton": "Hold",
     "createHoldDescription": "Make changes to your profile here. Click save when you're done.",
     "createHoldTitle": "What do you want to call it?"
+  },
+  "Sidebar": {
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "customers": "Customers",
+    "Items": "Items",
+    "categories": "Categories",
+    "reports": "Reports",
+    "settings": "Settings"
   }
 }
